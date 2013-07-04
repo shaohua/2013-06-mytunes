@@ -6,9 +6,15 @@ var SongQueue = Songs.extend({
         this.playFirst();
       }
     });
+
+    this.on('ended', this.delSong, this);
+
   },
   playFirst: function(){
     
+  },
+  delSong: function(song){
+    console.log('delSong', song);
   }
 
 });
