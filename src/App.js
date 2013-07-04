@@ -6,6 +6,7 @@ var App = Backbone.Model.extend({
 
     params.library.on('play', function(song){
       this.set('currentSong', song);
+      console.log('catch play event');
     }, this);
   }
 
