@@ -1,25 +1,27 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    this.on('add', function(){
-      if(this.length===1){
-        this.playFirst();
-      }
-    });
-
-    this.on('ended', this.delSong, this);
+    //listen to itself and its elements (since itself is a collection)
     this.on('enqueue', this.onEnqueue, this);
+    this.on('dequeue', this.onDequeue, this);
 
   },
+
   playFirst: function(){
     this.at(0).play();
   },
-  delSong: function(song){
-    console.log('delSong', song);
-  },
+  
   onEnqueue: function(song){
-    // this.add(song);
-    // console.log('SongQueue getting enqueue',this.length);
+    console.log('add song');
+    this.add(song);
+    if(this.length === 1){
+      this.playFirst();
+    }
+  },
+
+  onDequeue: function(song){
+      console.log('remove song');
+      this.remove(song);
   }
 
 });

@@ -1,4 +1,5 @@
 var PlayerView = Backbone.View.extend({
+  //model was assigned to current_song
 
   el: '<audio controls autoplay />',
 
@@ -7,7 +8,7 @@ var PlayerView = Backbone.View.extend({
 
   events: {
     'ended': function(){
-      console.log('Song ends');
+      this.model.ended();
     }
   },
 
