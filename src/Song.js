@@ -1,5 +1,10 @@
 var Song = Backbone.Model.extend({
 
+  initialize: function(){
+    this.on('play', this.onPlay);
+    this.on('ended', this.onEnded);
+  },
+
   play: function(){
     this.trigger('play', this);
     console.log('-->play event');
@@ -11,6 +16,10 @@ var Song = Backbone.Model.extend({
 
   dequeue: function(){
     this.trigger('dequeue', this);
+  },
+
+  onPlay: function(){
+    console.log('I captured my own event');
   }
 
 });
