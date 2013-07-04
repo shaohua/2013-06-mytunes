@@ -4,9 +4,9 @@ var SongQueueView = Backbone.View.extend({
 
   initialize: function() {
     console.log('SongQueueView initialize');
-    this.collection.on('ended', function(){
-      console.log('SongQueueView, ended event');
-    }, this);
+    // this.collection.on('ended', function(){
+    //   console.log('SongQueueView, ended event');
+    // }, this);
   },
 
   render: function() {

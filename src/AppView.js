@@ -1,7 +1,6 @@
 var AppView = Backbone.View.extend({
 
   initialize: function(params){
-    _.bindAll(this, 'render');
     this.playerView = new PlayerView({model: this.model.get('currentSong')});
     this.songQueueView = new SongQueueView({collection: this.model.get('songQueue')});
 
@@ -9,8 +8,13 @@ var AppView = Backbone.View.extend({
       this.playerView.setSong(model.get('currentSong'));
     }, this);
 
-    this.model.get('songQueue').on('add', this.render);
-    this.model.get('songQueue').on('remove', this.render);
+    this.model.get('songQueue').on('add', function(){
+      this.songQueueView.render();
+    }, this);
+
+    this.model.get('songQueue').on('remove', function(){
+      this.songQueueView.render();
+    }, this);
 
   },//end initialize
 

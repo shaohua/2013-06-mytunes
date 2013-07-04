@@ -19,6 +19,9 @@ var App = Backbone.Model.extend({
     //params.library is an instance of Songs(collection of Song)
     params.library.on('enqueue', function(song){
       this.get('songQueue').add(song);
+      if(this.get('songQueue').length===1){
+        this.get('songQueue').at(0).play();
+      }
       console.log('App catch enqueue event', this.get('songQueue').length);
 
     }, this);

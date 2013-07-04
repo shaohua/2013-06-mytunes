@@ -12,7 +12,7 @@ var SongQueue = Songs.extend({
 
   },
   playFirst: function(){
-    
+    this.at(0).play();
   },
   delSong: function(song){
     console.log('delSong', song);
