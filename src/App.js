@@ -14,6 +14,21 @@ var App = Backbone.Model.extend({
       console.log('catch ended event', song);
     }, this);
 
+    // this.get('songQueue').on('enqueue')
+
+    //params.library is an instance of Songs(collection of Song)
+    params.library.on('enqueue', function(song){
+      this.get('songQueue').add(song);
+      console.log('App catch enqueue event', this.get('songQueue').length);
+
+    }, this);
+
+    params.library.on('dequeue', function(song){
+      this.get('songQueue').remove(song);
+      console.log('App catch dequeue event', this.get('songQueue').length);
+    }, this);
+
+
   }
 
 });
