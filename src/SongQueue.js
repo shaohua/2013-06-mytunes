@@ -12,14 +12,12 @@ var SongQueue = Songs.extend({
   },
   
   onAdd: function(song){
-    console.log('added song');
     if(this.length === 1){
       this.playFirst();
     }
   },
 
   onDequeue: function(song){
-      console.log('remove song');
       this.remove(song);
       if(this.length){
         this.playFirst();
