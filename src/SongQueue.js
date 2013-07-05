@@ -2,7 +2,7 @@ var SongQueue = Songs.extend({
 
   initialize: function(){
     //listen to itself and its elements (since itself is a collection)
-    this.on('enqueue', this.onEnqueue, this);
+    this.on('add', this.onAdd, this);
     this.on('dequeue', this.onDequeue, this);
 
   },
@@ -11,9 +11,8 @@ var SongQueue = Songs.extend({
     this.at(0).play();
   },
   
-  onEnqueue: function(song){
-    console.log('add song');
-    this.add(song);
+  onAdd: function(song){
+    console.log('added song');
     if(this.length === 1){
       this.playFirst();
     }
