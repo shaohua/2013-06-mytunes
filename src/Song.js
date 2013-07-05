@@ -8,6 +8,10 @@ var Song = Backbone.Model.extend({
     this.trigger('play', this);
   },
 
+  ended: function(){
+    this.trigger('ended', this);
+  },
+
   enqueue: function(){
     this.trigger('enqueue', this);
   },
